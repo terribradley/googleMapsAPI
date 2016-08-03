@@ -6,63 +6,19 @@
     <link rel="stylesheet" href="build/css/styles.css">
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&"></script>
+
     <title>Our API</title>
   </head>
   <body>
-    <h1>Map</h1>
-    <button id="locateUser">Get Location</button>
-    <div id="map"></div>
-
-    <div id="locationField">
-      <input id="autocomplete" placeholder="Enter your address" type="text">
-    </div>
-<form id="address-form">
-  <table id="address">
-    <tr>
-      <td class="label">Street address</td>
-      <td class="slimField"><input class="field" id="street_number"
-            disabled="true"></input></td>
-      <td class="wideField" colspan="2"><input class="field" id="route"
-            disabled="true"></input></td>
-    </tr>
-    <tr>
-      <td class="label">City</td>
-      <td class="wideField" colspan="3"><input class="field" id="locality"
-            disabled="true"></input></td>
-    </tr>
-    <tr>
-      <td class="label">State</td>
-      <td class="slimField"><input class="field"
-            id="administrative_area_level_1" disabled="true"></input></td>
-      <td class="label">Zip code</td>
-      <td class="wideField"><input class="field" id="postal_code"
-            disabled="true"></input></td>
-    </tr>
-    <tr>
-      <td class="label">Country</td>
-      <td class="wideField" colspan="3"><input class="field"
-            id="country" disabled="true"></input></td>
-    </tr>
-  </table>
-  <button type="submit">Submit</button>
-</form>
-
-
-    <!-- <form id="tour-form">
-        <p>Specify the type of tour you want.</p>
-      <input type="radio" name="skill-level" value="beginner" checked>Beginner<br>
-      <input type="radio" name="skill-level" value="intermediate">Intermediate<br>
-      <input type="radio" name="skill-level" value="advanced">Advanced<br>
-        <p>Specify a start location</p>
-      <label for="start-location">Starting Address:</label>
-      <input type="text" id="start-location">
-        <p>and end location</p>
-      <label for="end-location">Ending Address:</label>
-      <input type="text" id="end-location">
+    <h1>Tour Info</h1>
+    <form id="tour-form">
+      <input type="radio" name="type-of-tour" value="coffeeshops">Coffee Shops</br>
+      <input type="radio" name="type-of-tour" value="parks">Parks</br>
+      <input type="radio" name="type-of-tour" value="monuments" checked>Monuments</br>
       <button type="submit">Submit</button>
-    </form> -->
-    <div id="error">
+    </form>
+    <div id="map">
 
     </div>
   </body>
