@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="build/css/styles.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+    <title>Our API</title>
+  </head>
+  <body>
+    <h1>Surf Form</h1>
+    <form id="tour-form">
+        <p>Specify the type of tour you want.</p>
+      <input type="radio" name="skill-level" value="beginner" checked>Beginner<br>
+      <input type="radio" name="skill-level" value="intermediate">Intermediate<br>
+      <input type="radio" name="skill-level" value="advanced">Advanced<br>
+        <p>Specify a start location</p>
+      <label for="start-location">Starting Address:</label>
+      <input type="text" id="start-location">
+        <p>and end location</p>
+      <label for="end-location">Ending Address:</label>
+      <input type="text" id="end-location">
+      <button type="submit">Submit</button>
+    </form>
+    <div id="output">
+
+    </div>
+  </body>
+</html>
