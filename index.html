@@ -6,16 +6,16 @@
     <link rel="stylesheet" href="build/css/styles.css">
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&"></script>
-
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&libraries=places"></script>
     <title>Our API</title>
   </head>
   <body>
     <h1>Tour Info</h1>
     <form id="tour-form">
-      <input type="radio" name="type-of-tour" value="coffeeshops">Coffee Shops</br>
+      <input type="text"id="place"></br>
+      <input type="radio" name="type-of-tour" value="cafes">Cafes</br>
       <input type="radio" name="type-of-tour" value="parks">Parks</br>
-      <input type="radio" name="type-of-tour" value="monuments" checked>Monuments</br>
+      <input type="radio" name="type-of-tour" value="museums" checked>Museums</br>
       <button type="submit">Submit</button>
     </form>
     <div id="map">

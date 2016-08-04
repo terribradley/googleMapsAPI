@@ -1,26 +1,29 @@
 var apiKey = require('./../.env').apiKey;
-
+var map;
 // var initMap = require('./../js/map.js')
 
 $( document ).ready(function() {
   $("#tour-form").submit(function(event){
     event.preventDefault();
     var query = $('input:radio[name="type-of-tour"]:checked').val();
-    var portland = new google.maps.LatLng(45.52, -122.67);
-    debugger;
-    var myOptions = {
-      zoom: 15,
-      center: portland,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
-    var service = new google.maps.places.PlacesService(mapObject);
-    var request = {
-      location: portland,
-      radius: '500',
-      query: query
-    };
-     service.textSearch(request, callback);
+    // debugger;
+    var placeName = $("#location").val()
+    $.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&libraries=places").then(function(response){
+      var portland = new google.maps.LatLng(45.52, -122.67);
+      var myOptions = {
+        zoom: 15,
+        center: portland,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map"), myOptions);
+      var request = {
+        location: portland,
+        radius: '500',
+        query: query
+      };
+      var service = new google.maps.places.PlacesService(map);
+       service.textSearch(request, callback);
+    });
   });
 });
 
