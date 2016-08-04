@@ -8,7 +8,7 @@ $( document ).ready(function() {
   $("#tour-form").submit(function(event){
     event.preventDefault();
     var query = $('input:radio[name="type-of-tour"]:checked').val().split("+");
-    debugger;
+    // debugger;
     var location = $("#location").val();
     geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': location}, function(results, status) {
