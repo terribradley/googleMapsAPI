@@ -1,47 +1,91 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  #map {
-    height: 90%;
+@import "variables";
+
+body {
+  background-image: url("/img/header.jpg");
+  background-size: cover;
+  background-position: center;
+  color: $primary-color;
+}
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
+  h1 {
+    font-size: 7em;
+    margin-top: 10%;
+    letter-spacing: 3px;
+  }
+  p {
+    font-size: 2em;
+    letter-spacing: 3px;
   }
 }
-
-#locationField, #controls {
-        position: relative;
-        width: 490px;
+.container {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(244, 247, 248, .8);
+  section  {
+    margin-bottom: 5%;
+    margin-top: 5%;
+    p {
+      font-size: 1.2em;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      #location {
+        width: 400px;
+        height: 60px;
+        font-size: 2em;
       }
-      #autocomplete {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 99%;
+      input:focus {
+        outline: none;
       }
-      .label {
-        text-align: right;
-        font-weight: bold;
-        width: 100px;
-        color: #303030;
+      .radio-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1.2em;
+        margin-top: 5%;
+        justify-content: space-around;
+        background-color: white;
+        border: 1px solid $secondary-color;
+        border-radius: 3px;
+        input {
+        display: none;
+        &[type="radio"]:checked + label {
+          color: $tertiary-color;
+        }
+        }
+        label {
+        font-size: 1.2em;
+         margin: 2% 5%;
+         &:hover {
+           color: $tertiary-color;
+         }
+        }
       }
-      #address {
-        border: 1px solid #000090;
-        background-color: #f0f0ff;
-        width: 480px;
-        padding-right: 2px;
+      button {
+        margin: 3%;
+        background-color: white;
+        border: 2px solid $secondary-color;
+        padding: 8px 30px;
+        border-radius: 5px;
+        &:focus {
+          outline: none;
+        }
+        &:hover {
+          background-color: rgba(244, 247, 248, .8);
+        }
       }
-      #address td {
-        font-size: 10pt;
-      }
-      .field {
-        width: 99%;
-      }
-      .slimField {
-        width: 80px;
-      }
-      .wideField {
-        width: 200px;
-      }
-      #locationField {
-        height: 20px;
-        margin-bottom: 2px;
-      }
+    }
+  }
+  #map {
+    width: 70%;
+    height: 60%;
+  }
+}

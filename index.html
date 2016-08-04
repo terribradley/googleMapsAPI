@@ -11,20 +11,39 @@
     <title>Our API</title>
   </head>
   <body>
-    <h1>Tour Info</h1>
-    <form id="tour-form">
-      <input type="text" id="location"></br>
-      <input type="radio" name="type-of-tour" value="amusment_park+Bowling_alley+stadium+casino">Gaming Tour</br>
-      <input type="radio" name="type-of-tour" value="zoos+parks+aquariums">Nature</br>
-      <input type="radio" name="type-of-tour" value="cemetery+funeral_home">Ghost Tour</br>
-      <input type="radio" name="type-of-tour" value="spa+florist+beauty_salon+jewelery_store">Treat Yourself Tour</br>
-      <input type="radio" name="type-of-tour" value="church+mosque+hindu_temple+synagogue
-">Spiritual Tour</br>
-      <input type="radio" name="type-of-tour" value="library+book_store+movie_theater">Nerd Tour</br>
-      <input type="radio" name="type-of-tour" value="bar+liquor_store+night_club">Get Drunk Tour</br>
-      <button type="submit">Submit</button>
-    </form>
-    <div id="map">
+      <header>
+        <h1>CITY TOURS</h1>
+        <p>See your city</p>
+      </header>
+      <div class="container">
+      <section>
+        <form id="tour-form">
+          <h2>Type the city or neighborhood you are visiting</h2>
+          <input type="text" id="location"></br>
+          <p>Below we have some unique walking tours mapped out for you. Select one and see what your chosen destination offers!</p>
+          <h2>Choose which walking tour you are interested in</h2>
+          <div class="radio-buttons">
+            <input id="game" type="radio" name="type-of-tour" value="amusement_park+Bowling_alley+stadium+casino">
+            <label for="game">Gaming Tour</label>
+            <input id="nature" type="radio" name="type-of-tour" value="zoos+parks+aquariums">
+            <label for="nature">Nature Tour</label>
+            <input id="ghost" type="radio" name="type-of-tour" value="cemetery+funeral_home">
+            <label for="ghost">Ghost Tour</label>
+            <input id="treat" type="radio" name="type-of-tour" value="spa+florist+beauty_salon+jewelery_store">
+            <label for="treat">Treat Yourself Tour</label>
+            <input id="spirit" type="radio" name="type-of-tour"
+           value="church+mosque+hindu_temple+synagogue">
+           <label for="spirit">Spiritual Tour</label>
+            <input id="nerd" type="radio" name="type-of-tour" value="library+book_store+movie_theater">
+            <label for="nerd">Nerd Tour</label>
+            <input id="drunk" type="radio" name="type-of-tour" value="bar+liquor_store+night_club">
+            <label for="drunk">Drunk Tour</label>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+      <div id="map">
+      </div>
     </div>
   </body>
 </html>

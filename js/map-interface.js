@@ -1,13 +1,14 @@
 var apiKey = require('./../.env').apiKey;
 var map;
 var geocoder;
+var query;
 
 // var initMap = require('./../js/map.js')
 
 $( document ).ready(function() {
   $("#tour-form").submit(function(event){
     event.preventDefault();
-    var query = $('input:radio[name="type-of-tour"]:checked').val().split("+");
+    query = $('input:radio[name="type-of-tour"]:checked').val().split("+");
     // debugger;
     var location = $("#location").val();
     geocoder = new google.maps.Geocoder();
@@ -27,15 +28,12 @@ $( document ).ready(function() {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-    // $.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&libraries=places").then(function(response)
-
-    // });
   });
 });
 function initMap(center) {
   map = new google.maps.Map(document.getElementById('map'), {
     center: center,
-    zoom: 8
+    zoom: 12
   });
 }
 
@@ -49,9 +47,33 @@ function callback(results, status) {
 }
 
 function createMarker(place) {
+  var path;
+  console.log(query)
+  if(query[0]==="zoos"){
+    path="img/riparianhabitat.png";
+  } else if(query[0]==="amusement_park") {
+    path="img/game.png"
+  } else if(query[0]==="cemetery") {
+    path="img/ghost.png"
+  } else if(query[0]==="spa") {
+    path="img/treat.png"
+  } else if(query[0]==="church") {
+    path="img/spiritual.png"
+  } else if(query[0]==="library") {
+    path="img/nerd.png"
+  } else {
+    path="img/drunk.png";
+  }
+  var infowindow = new google.maps.InfoWindow({
+    content: place.name
+  });
   var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
     map: map,
+    icon: path,
     position: place.geometry.location
+  });
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
   });
 }
