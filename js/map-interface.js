@@ -1,31 +1,41 @@
 var apiKey = require('./../.env').apiKey;
 var map;
+var geocoder;
+
 // var initMap = require('./../js/map.js')
 
 $( document ).ready(function() {
   $("#tour-form").submit(function(event){
     event.preventDefault();
     var query = $('input:radio[name="type-of-tour"]:checked').val();
-    // debugger;
-    var placeName = $("#location").val()
-    $.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&libraries=places").then(function(response){
-      var portland = new google.maps.LatLng(45.52, -122.67);
-      var myOptions = {
-        zoom: 15,
-        center: portland,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById("map"), myOptions);
-      var request = {
-        location: portland,
-        radius: '500',
-        query: query
-      };
-      var service = new google.maps.places.PlacesService(map);
-       service.textSearch(request, callback);
+    debugger;
+    var location = $("#location").val();
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': location}, function(results, status) {
+      if (status == 'OK') {
+        initMap(results[0].geometry.location);
+        var request = {
+          location: results[0].geometry.location,
+          radius: '500',
+          query: query
+        };
+        var service = new google.maps.places.PlacesService(map);
+         service.textSearch(request, callback);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
     });
+    // $.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyBqE85hcRrRHYNxF6x0b83XSsdxKqaDUv0&libraries=places").then(function(response)
+
+    // });
   });
 });
+function initMap(center) {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: center,
+    zoom: 8
+  });
+}
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
