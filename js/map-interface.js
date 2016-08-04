@@ -7,20 +7,22 @@ var geocoder;
 $( document ).ready(function() {
   $("#tour-form").submit(function(event){
     event.preventDefault();
-    var query = $('input:radio[name="type-of-tour"]:checked').val();
+    var query = $('input:radio[name="type-of-tour"]:checked').val().split("+");
     debugger;
     var location = $("#location").val();
     geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': location}, function(results, status) {
       if (status == 'OK') {
         initMap(results[0].geometry.location);
-        var request = {
-          location: results[0].geometry.location,
-          radius: '500',
-          query: query
-        };
-        var service = new google.maps.places.PlacesService(map);
-         service.textSearch(request, callback);
+        query.forEach(function(individualQuery){
+          var request = {
+            location: results[0].geometry.location,
+            radius: '500',
+            query: individualQuery
+          };
+          var service = new google.maps.places.PlacesService(map);
+          service.textSearch(request, callback);
+        });
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
